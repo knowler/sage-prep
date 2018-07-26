@@ -23,5 +23,36 @@ cp -R {app,config,dist,resources,vendor} $temp  # Theme setup & config, views, t
 rm -rf $temp/resources/assets                   # Remove source assets
 cp LICENSE.md $temp                             # Copy Sage license (legally required)
 
+# Set distribute file name
+dist="$theme-distribute-$timestamp-$hash".zip
+
+# Compress distribution
+cd .prep
+zip -qr $dist "$theme-$timestamp-$hash"
+
+# Remove temporary theme directory
+rm -rf "$theme-$timestamp-$hash"
+
+# Relocate distribution and current working directory
+mv $dist ..
+cd ..
+
+echo "Finished!"
+# Set distribute file name
+dist="$theme-distribute-$timestamp-$hash".zip
+
+# Compress distribution
+cd .prep
+zip -qr $dist "$theme-$timestamp-$hash"
+
+# Remove temporary theme directory
+rm -rf "$theme-$timestamp-$hash"
+
+# Relocate distribution and current working directory
+mv $dist ..
+cd ..
+
 # Install Composer dependencies for development (again)
 composer install
+
+echo "Finished!"
