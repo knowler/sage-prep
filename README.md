@@ -10,7 +10,7 @@ Sage theme for deployment.
    ```sh
    chmod +x bin/prep.sh
    ```
-3. Add the script to your `packages.json`:
+3. Add the script to your `package.json`:
    ```diff
    "scripts": {
    +  "prep": "npm run build:production && ./bin/prep.sh"
